@@ -9,7 +9,10 @@ class Place(models.Model):
     phone = models.CharField(max_length=30)
     gain = models.FloatField()
     capacity = models.IntegerField()
-    userId = models.ForeignKey(Users, on_delete=models.CASCADE)
+    userId = models.ForeignKey(Users)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+

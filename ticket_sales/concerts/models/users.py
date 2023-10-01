@@ -11,6 +11,8 @@ class Users(models.Model):
     name = models.CharField(max_length=30)
     lastname = models.CharField(max_length=50)
     session = models.CharField(max_length=10, choices=Sessions.choices, default=Sessions.USER)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
