@@ -9,7 +9,7 @@ class Place(models.Model):
     phone = models.CharField(max_length=30)
     gain = models.FloatField()
     capacity = models.IntegerField()
-    userId = models.ForeignKey(Users)
+    userId = models.ForeignKey(Users, on_delete=models.CASCADE)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
 
