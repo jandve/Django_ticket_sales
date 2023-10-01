@@ -1,6 +1,6 @@
 from django.db import models
 
-from ticket_sales.concerts.models.users import Users
+from .users import Users
 
 
 class Place(models.Model):
@@ -10,3 +10,6 @@ class Place(models.Model):
     gain = models.FloatField()
     capacity = models.IntegerField()
     userId = models.ForeignKey(Users, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
