@@ -1,15 +1,14 @@
 from django.db import models
-
-from .users import Users
-
+from .user import User
+from .validators import validate_capacity
 
 class Place(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
     phone = models.CharField(max_length=30)
     gain = models.FloatField()
-    capacity = models.IntegerField()
-    userId = models.ForeignKey(Users, on_delete=models.CASCADE)
+    capacity = models.IntegerField(validators=[validate_capacity,])
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
 
