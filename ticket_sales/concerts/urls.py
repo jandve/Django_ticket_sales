@@ -12,6 +12,7 @@ router.register(r"place", PlaceViewSet)
 urlpatterns=[
     path("product",ProductViewSet.as_view({'get': 'list'}) , name="product"),
     path("user", UserViewSet.as_view({'get': 'list'}), name="user"),
+    path("user/<str:user_id>/place", UserViewSet.user_place, name="user-places"),
     path("place", PlaceViewSet.as_view({'get': 'list'}), name="place"),
     path('',include(router.urls))
 ]

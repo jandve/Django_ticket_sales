@@ -10,7 +10,7 @@ def validate_capacity(value):
 def validate_password(value):
     if  len(value)<6:
         raise ValidationError(
-        f"{value} La contraseña debe tener un minimo 6 caracteres" ,
+        f"{value} La contraseña debe tener un minimo de 6 caracteres" ,
         params={'value':value},
 )
 
