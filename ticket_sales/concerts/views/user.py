@@ -18,7 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
             return all the places for a given user
         """
         try:
-            places = Place.objects.filter(userId=user_id)
+            places = Place.objects.filter(user_id=user_id)
             return JsonResponse(UserPlacesSerializer({
                 "places": places,
                 "count": places.count(),
