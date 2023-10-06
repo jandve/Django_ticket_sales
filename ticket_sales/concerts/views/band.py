@@ -1,23 +1,24 @@
-from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from ..models.band import Band
 from ..models.product import Product
 from ..serializers.band import BandSerializer, BandProductsSerializer
-from django.http import JsonResponse
+from django.http import  JsonResponse
 
 class BandViewSet(viewsets.ModelViewSet):
     queryset = Band.objects.all()
     serializer_class = BandSerializer
 
-@api_view(['GET'])
-def band_product(bandId):
-    try: 
-        product = Product.objects.filter(bandId = bandId)
-        return JsonResponse(BandProductsSerializer({
-            "product": product,
-            "count": product.count(),
-        }))
-    except Band.DoesNotExist: 
-        return JsonResponse({'message': 'The product does not exist'}, status=status.HTTP_404_NOT_FOUND) 
-
+    @api_view(['GET'])
+    def band_product(self, band_id):
+        """
+        Products according to the band
+        """
+        try: 
+            product = Product.objects.filter(band_id=band_id)
+            return JsonResponse(BandProductsSerializer({
+                "product": product,
+                "count": product.count(),
+            }))
+        except Exception as e:
+            return JsonResponse({"message": str (e)}, status=500, safe=False)

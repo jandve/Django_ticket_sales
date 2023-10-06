@@ -17,6 +17,7 @@ urlpatterns=[
     path("product",ProductViewSet.as_view({'get': 'list'}) , name="product"),
     path("product/<str:place_id>/place", ProductViewSet.product_place, name="product-places"),
     path("place", PlaceViewSet.as_view({'get': 'list', 'post': 'create', 'patch':'partial_update', 'put': 'update', 'delete': 'destroy'}), name="place"),
-    path("band", BandViewSet.as_view({'get': 'list'}), name="band"),
+    path("band", BandViewSet.as_view({'get': 'list', 'post': 'create', 'patch': 'partial_update', 'put': 'update', 'delete': 'destroy'}), name="band"),
+    path("band/<str:band_id>/product", BandViewSet.band_product, name="band-product"),
     path('',include(router.urls))
 ]
