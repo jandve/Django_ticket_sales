@@ -7,6 +7,6 @@ class PlaceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class GroupPlaceSerializer(serializers.ModelSerializer):
-   class Meta:
+    class Meta:
         model= Place
         fields = ("id", "name","capacity")
